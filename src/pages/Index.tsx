@@ -8,7 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { jobPostings } from "@/lib/mock-data";
 import { TrustBadge } from "@/components/TrustBadge";
 import heroBg from "@/assets/hero-bg.jpg";
@@ -18,21 +18,12 @@ import ratingImg from "@/assets/rating-stars.jpg";
 import validationImg from "@/assets/realtime-validation.jpg";
 
 const departments = [
-  { id: "all", label: "All Departments", icon: Briefcase, count: 6 },
-  { id: "software", label: "Software & IT", icon: Code2, count: 3 },
-  { id: "hardware", label: "Hardware & Electronics", icon: Cpu, count: 1 },
-  { id: "civil", label: "Civil Engineering", icon: HardHat, count: 1 },
-  { id: "mechanical", label: "Mechanical Engineering", icon: Cog, count: 1 },
+  { id: "all", label: "All Departments", icon: Briefcase },
+  { id: "software", label: "Software & IT", icon: Code2 },
+  { id: "hardware", label: "Hardware & Electronics", icon: Cpu },
+  { id: "civil", label: "Civil Engineering", icon: HardHat },
+  { id: "mechanical", label: "Mechanical Engineering", icon: Cog },
 ];
-
-// Map jobs to departments for demo
-const jobDeptMap: Record<string, string[]> = {
-  software: ["j1", "j2", "j3", "j5"],
-  hardware: ["j1", "j4"],
-  civil: ["j3", "j6"],
-  mechanical: ["j5", "j6"],
-  all: ["j1", "j2", "j3", "j4", "j5", "j6"],
-};
 
 const FloatingOrb = ({ className }: { className?: string }) => (
   <div className={`absolute rounded-full blur-3xl opacity-20 animate-pulse ${className}`} />
@@ -52,8 +43,16 @@ const Index = () => {
     }
   }, [isAuthenticated, user, navigate]);
 
+  const deptCounts = useMemo(() => {
+    const counts: Record<string, number> = { all: jobPostings.length };
+    jobPostings.forEach((j) => {
+      counts[j.department] = (counts[j.department] || 0) + 1;
+    });
+    return counts;
+  }, []);
+
   const filteredJobs = jobPostings.filter((j) => {
-    const inDept = jobDeptMap[activeDept]?.includes(j.id) ?? true;
+    const inDept = activeDept === "all" || j.department === activeDept;
     const matchSearch =
       !search ||
       j.title.toLowerCase().includes(search.toLowerCase()) ||
@@ -157,7 +156,7 @@ const Index = () => {
                     <dept.icon size={18} className={isActive ? "text-sidebar-primary" : "text-sidebar-foreground/50 group-hover:text-sidebar-foreground/70"} />
                     <span className="flex-1 text-left">{dept.label}</span>
                     <Badge variant="secondary" className={`text-xs px-2 ${isActive ? "bg-sidebar-primary text-sidebar-primary-foreground" : "bg-sidebar-accent text-sidebar-foreground/60"}`}>
-                      {dept.count}
+                      {deptCounts[dept.id] || 0}
                     </Badge>
                     <ChevronRight size={14} className={`transition-transform ${isActive ? "translate-x-0 opacity-100" : "-translate-x-1 opacity-0"}`} />
                   </button>
