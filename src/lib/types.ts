@@ -20,6 +20,8 @@ export interface Recruiter {
   verifiedAt?: string;
 }
 
+export type Department = "software" | "hardware" | "civil" | "mechanical";
+
 export interface JobPosting {
   id: string;
   title: string;
@@ -28,6 +30,7 @@ export interface JobPosting {
   type: "job" | "internship";
   location: string;
   salary: string;
+  department: Department;
   description: string;
   requirements: string[];
   postedAt: string;
