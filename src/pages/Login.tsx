@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
+import { DEMO_USERS } from "@/lib/mock-data";
 import { ShieldCheck, Eye, EyeOff, LogIn, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import studentsImg from "@/assets/students-collab.jpg";
+import sharanImg from "@/assets/sharan-raj.jpg";
 
 const FloatingOrb = ({ className }: { className?: string }) => (
   <div className={`absolute rounded-full blur-3xl opacity-20 animate-pulse ${className}`} />
@@ -16,19 +18,64 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [showPw, setShowPw] = useState(false);
   const [error, setError] = useState("");
+  const [loadingUser, setLoadingUser] = useState<{ name: string; avatar?: string } | null>(null);
   const { login } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!loadingUser) return;
+    const utterance = new SpeechSynthesisUtterance(`${loadingUser.name}, please wait`);
+    utterance.rate = 0.9;
+    utterance.pitch = 1;
+    window.speechSynthesis.speak(utterance);
+    const timer = setTimeout(() => {
+      setLoadingUser(null);
+      navigate(username === "Admin" ? "/admin" : "/dashboard");
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [loadingUser, navigate, username]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     const success = login(username, password);
     if (success) {
-      navigate(username === "Admin" ? "/admin" : "/dashboard");
+      const entry = DEMO_USERS[username];
+      if (entry?.user?.avatar) {
+        setLoadingUser({ name: entry.user.name, avatar: entry.user.avatar });
+      } else {
+        navigate(username === "Admin" ? "/admin" : "/dashboard");
+      }
     } else {
       setError("Invalid username or password");
     }
   };
+
+  if (loadingUser) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-background relative overflow-hidden">
+        <FloatingOrb className="w-96 h-96 bg-primary/30 -top-32 -left-32" />
+        <FloatingOrb className="w-72 h-72 bg-trust-gold/20 bottom-20 right-10" />
+        <div className="relative z-10 flex flex-col items-center gap-6 animate-fade-in-up">
+          <div className="relative">
+            <div className="w-36 h-36 rounded-full overflow-hidden border-4 border-trust-gold shadow-gold animate-[float_3s_ease-in-out_infinite]">
+              <img src={sharanImg} alt={loadingUser.name} className="w-full h-full object-cover" />
+            </div>
+            <div className="absolute -bottom-1 -right-1 w-10 h-10 rounded-full bg-trust-green flex items-center justify-center border-2 border-background animate-scale-in">
+              <ShieldCheck className="w-5 h-5 text-primary-foreground" />
+            </div>
+          </div>
+          <h2 className="text-3xl font-bold font-display text-foreground">{loadingUser.name}</h2>
+          <p className="text-muted-foreground text-lg">Please wait, loading your dashboard...</p>
+          <div className="flex gap-2 mt-2">
+            {[0, 1, 2].map(i => (
+              <div key={i} className="w-3 h-3 rounded-full bg-trust-gold animate-bounce" style={{ animationDelay: `${i * 0.2}s` }} />
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex min-h-screen">

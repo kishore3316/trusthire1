@@ -4,6 +4,7 @@ export interface User {
   username: string;
   role: UserRole;
   name: string;
+  avatar?: string;
 }
 
 export type TrustLevel = "high" | "medium" | "low" | "unverified";
