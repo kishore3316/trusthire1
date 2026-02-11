@@ -13,6 +13,10 @@ export const DEMO_USERS: Record<string, { password: string; user: User }> = {
     password: "777",
     user: { username: "sharan", role: "student", name: "Sharan Raj R", avatar: "sharan-raj" },
   },
+  prithiv: {
+    password: "777",
+    user: { username: "prithiv", role: "student", name: "Prithiv" },
+  },
 };
 
 export const recruiters: Recruiter[] = [

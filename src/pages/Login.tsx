@@ -44,7 +44,11 @@ const Login = () => {
       if (entry?.user?.avatar) {
         setLoadingUser({ name: entry.user.name, avatar: entry.user.avatar });
       } else {
-        navigate(username === "Admin" ? "/admin" : "/dashboard");
+        const utterance = new SpeechSynthesisUtterance(`Welcome ${entry?.user?.name || username.trim()}`);
+        utterance.rate = 0.9;
+        utterance.pitch = 1;
+        window.speechSynthesis.speak(utterance);
+        navigate(username.trim() === "Admin" ? "/admin" : "/dashboard");
       }
     } else {
       setError("Invalid username or password");
