@@ -38,9 +38,9 @@ const Login = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    const success = login(username, password);
+    const success = login(username.trim(), password.trim());
     if (success) {
-      const entry = DEMO_USERS[username];
+      const entry = DEMO_USERS[username.trim()];
       if (entry?.user?.avatar) {
         setLoadingUser({ name: entry.user.name, avatar: entry.user.avatar });
       } else {
