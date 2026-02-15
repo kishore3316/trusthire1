@@ -34,6 +34,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
 export const useAuth = () => {
   const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error("useAuth must be within AuthProvider");
+  if (!ctx) {
+    // Fallback for HMR edge cases — return safe defaults
+    return { user: null, login: () => false, logout: () => {}, isAuthenticated: false } as AuthContextType;
+  }
   return ctx;
 };
