@@ -195,6 +195,26 @@ const Login = () => {
           <p className="mt-6 text-center text-sm text-muted-foreground">
             Protected by AI-powered fraud detection
           </p>
+
+          {/* Feedback QR Code */}
+          <div className="mt-8 flex flex-col items-center gap-3 p-4 rounded-xl border border-border bg-muted/30">
+            <p className="text-sm font-medium text-foreground">Share Your Feedback</p>
+            <a
+              href="https://wa.me/916374819340?text=Hi%2C%20I%20would%20like%20to%20share%20feedback%20about%20TrustHire"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg overflow-hidden border-2 border-trust-gold/30 hover:border-trust-gold transition-colors"
+            >
+              <img
+                src={`https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${encodeURIComponent("https://wa.me/916374819340?text=Hi, I would like to share feedback about TrustHire")}`}
+                alt="Scan to send feedback on WhatsApp"
+                className="w-[140px] h-[140px]"
+              />
+            </a>
+            <p className="text-xs text-muted-foreground text-center">
+              Scan to send feedback via WhatsApp
+            </p>
+          </div>
         </div>
       </div>
     </div>
