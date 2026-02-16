@@ -40,6 +40,16 @@ export const recruiters: Recruiter[] = [
   { id: "r10", companyName: "Bosch India", domain: "bosch.com", verified: true, trustLevel: "high", rating: 4.5, totalReviews: 167, logo: "🏢", verifiedAt: "2025-09-20" },
   { id: "r11", companyName: "Mahindra & Mahindra", domain: "mahindra.com", verified: true, trustLevel: "high", rating: 4.3, totalReviews: 198, logo: "🏢", verifiedAt: "2025-11-01" },
   { id: "r12", companyName: "Siemens India", domain: "siemens.com", verified: true, trustLevel: "high", rating: 4.6, totalReviews: 142, logo: "🏢", verifiedAt: "2025-08-20" },
+  { id: "r13", companyName: "Amazon India", domain: "amazon.com", verified: true, trustLevel: "high", rating: 4.7, totalReviews: 278, logo: "🏢", verifiedAt: "2025-12-10" },
+  { id: "r14", companyName: "Zoho Corporation", domain: "zoho.com", verified: true, trustLevel: "high", rating: 4.4, totalReviews: 165, logo: "🏢", verifiedAt: "2025-11-20" },
+  { id: "r15", companyName: "Flipkart", domain: "flipkart.com", verified: true, trustLevel: "high", rating: 4.5, totalReviews: 210, logo: "🏢", verifiedAt: "2025-10-15" },
+  { id: "r16", companyName: "Reliance Industries", domain: "ril.com", verified: true, trustLevel: "high", rating: 4.3, totalReviews: 245, logo: "🏢", verifiedAt: "2025-09-01" },
+  { id: "r17", companyName: "HCL Technologies", domain: "hcltech.com", verified: true, trustLevel: "high", rating: 4.4, totalReviews: 195, logo: "🏢", verifiedAt: "2025-10-25" },
+  { id: "r18", companyName: "Accenture India", domain: "accenture.com", verified: true, trustLevel: "high", rating: 4.5, totalReviews: 220, logo: "🏢", verifiedAt: "2025-11-05" },
+  { id: "r19", companyName: "Tata Motors", domain: "tatamotors.com", verified: true, trustLevel: "high", rating: 4.4, totalReviews: 185, logo: "🏢", verifiedAt: "2025-08-15" },
+  { id: "r20", companyName: "Hyundai India", domain: "hyundai.com", verified: true, trustLevel: "high", rating: 4.3, totalReviews: 140, logo: "🏢", verifiedAt: "2025-09-25" },
+  { id: "r21", companyName: "Samsung R&D India", domain: "samsung.com", verified: true, trustLevel: "high", rating: 4.6, totalReviews: 175, logo: "🏢", verifiedAt: "2025-10-30" },
+  { id: "r22", companyName: "Qualcomm India", domain: "qualcomm.com", verified: true, trustLevel: "high", rating: 4.7, totalReviews: 130, logo: "🏢", verifiedAt: "2025-11-12" },
 ];
 
 export type Department = "software" | "hardware" | "civil" | "mechanical";
@@ -171,6 +181,136 @@ export const jobPostings: JobPosting[] = [
     requirements: ["B.Tech in CS/IT", "AWS/Azure certified", "2+ years experience"],
     postedAt: "2026-01-28", trustScore: 90, verified: true, flagged: false,
     applicationUrl: "https://careers.wipro.com", recruiter: recruiters[4],
+  },
+
+  // ── New LinkedIn-sourced Jobs ──
+
+  // Software
+  {
+    id: "j18", title: "SDE-1 Backend Engineer", company: "Amazon India", recruiterId: "r13", type: "job",
+    location: "Hyderabad, India", salary: "₹22-38 LPA", department: "software",
+    description: "Build scalable microservices powering Amazon's e-commerce platform. Work with Java, AWS Lambda, DynamoDB, and distributed systems at massive scale.",
+    requirements: ["B.Tech/M.Tech in CS", "Java/Python proficiency", "Data structures & algorithms", "System design knowledge"],
+    postedAt: "2026-02-10", trustScore: 97, verified: true, flagged: false,
+    applicationUrl: "https://www.amazon.jobs", recruiter: recruiters[12],
+  },
+  {
+    id: "j19", title: "Product Engineer - CRM", company: "Zoho Corporation", recruiterId: "r14", type: "job",
+    location: "Chennai, India", salary: "₹8-16 LPA", department: "software",
+    description: "Develop features for Zoho CRM used by 250K+ businesses worldwide. Full-stack role with Java backend and JavaScript frontend.",
+    requirements: ["B.Tech in CS/IT", "Java, JavaScript", "REST APIs", "SQL databases"],
+    postedAt: "2026-02-09", trustScore: 92, verified: true, flagged: false,
+    applicationUrl: "https://careers.zoho.com", recruiter: recruiters[13],
+  },
+  {
+    id: "j20", title: "Software Development Intern", company: "Flipkart", recruiterId: "r15", type: "internship",
+    location: "Bangalore, India", salary: "₹60,000/month", department: "software",
+    description: "6-month internship with Flipkart's supply chain tech team. Build ML-powered logistics optimization tools using Python and Spark.",
+    requirements: ["Pursuing B.Tech/M.Tech in CS", "Python, SQL", "ML basics preferred", "Strong problem-solving"],
+    postedAt: "2026-02-11", trustScore: 94, verified: true, flagged: false,
+    applicationUrl: "https://www.flipkartcareers.com", recruiter: recruiters[14],
+  },
+  {
+    id: "j21", title: "Full Stack Developer", company: "HCL Technologies", recruiterId: "r17", type: "job",
+    location: "Noida, India", salary: "₹7-13 LPA", department: "software",
+    description: "Develop enterprise web applications using Angular, Node.js, and PostgreSQL for global banking clients.",
+    requirements: ["B.Tech in CS/IT", "Angular/React", "Node.js, Express", "2+ years experience"],
+    postedAt: "2026-02-08", trustScore: 89, verified: true, flagged: false,
+    applicationUrl: "https://www.hcltech.com/careers", recruiter: recruiters[16],
+  },
+  {
+    id: "j22", title: "Data Analyst - Jio Platforms", company: "Reliance Industries", recruiterId: "r16", type: "job",
+    location: "Mumbai, India", salary: "₹10-18 LPA", department: "software",
+    description: "Analyze user behavior data from 450M+ Jio subscribers. Build dashboards and predictive models using Python, Tableau, and BigQuery.",
+    requirements: ["B.Tech/M.Tech in CS/Stats", "Python, SQL", "Tableau/PowerBI", "Statistics knowledge"],
+    postedAt: "2026-02-12", trustScore: 91, verified: true, flagged: false,
+    applicationUrl: "https://careers.ril.com", recruiter: recruiters[15],
+  },
+  {
+    id: "j23", title: "SAP Consultant - Fresher", company: "Accenture India", recruiterId: "r18", type: "job",
+    location: "Bangalore, India", salary: "₹6-10 LPA", department: "software",
+    description: "Join Accenture's SAP practice and work on ERP implementations for Fortune 500 clients. Full training provided for freshers.",
+    requirements: ["B.Tech in any branch", "Strong communication", "Willingness to learn SAP", "Analytical mindset"],
+    postedAt: "2026-02-10", trustScore: 90, verified: true, flagged: false,
+    applicationUrl: "https://www.accenture.com/in-en/careers", recruiter: recruiters[17],
+  },
+
+  // Hardware
+  {
+    id: "j24", title: "5G Modem Engineer", company: "Qualcomm India", recruiterId: "r22", type: "job",
+    location: "Hyderabad, India", salary: "₹20-35 LPA", department: "hardware",
+    description: "Design and verify 5G NR modem subsystems using Verilog/SystemVerilog. Work on next-gen Snapdragon chipsets.",
+    requirements: ["M.Tech in ECE/VLSI", "Verilog, SystemVerilog", "5G/LTE protocol knowledge", "UVM verification"],
+    postedAt: "2026-02-11", trustScore: 96, verified: true, flagged: false,
+    applicationUrl: "https://www.qualcomm.com/company/careers", recruiter: recruiters[21],
+  },
+  {
+    id: "j25", title: "Hardware Test Engineer", company: "Samsung R&D India", recruiterId: "r21", type: "job",
+    location: "Bangalore, India", salary: "₹12-22 LPA", department: "hardware",
+    description: "Develop test frameworks for Samsung's mobile SoC platforms. Work with JTAG, oscilloscopes, and automated test equipment.",
+    requirements: ["B.Tech/M.Tech in ECE", "PCB testing experience", "Python/Perl scripting", "Lab equipment proficiency"],
+    postedAt: "2026-02-09", trustScore: 93, verified: true, flagged: false,
+    applicationUrl: "https://www.samsung.com/in/aboutsamsung/careers", recruiter: recruiters[20],
+  },
+  {
+    id: "j26", title: "IoT Embedded Intern", company: "Reliance Industries", recruiterId: "r16", type: "internship",
+    location: "Pune, India", salary: "₹40,000/month", department: "hardware",
+    description: "Develop IoT sensor nodes for Reliance's smart factory initiative. Program ESP32/STM32 microcontrollers with FreeRTOS.",
+    requirements: ["Pursuing B.Tech in ECE/EEE", "C/C++ embedded programming", "Arduino/ESP32 projects", "Basic circuit design"],
+    postedAt: "2026-02-13", trustScore: 90, verified: true, flagged: false,
+    applicationUrl: "https://careers.ril.com", recruiter: recruiters[15],
+  },
+
+  // Mechanical
+  {
+    id: "j27", title: "EV Powertrain Engineer", company: "Tata Motors", recruiterId: "r19", type: "job",
+    location: "Pune, India", salary: "₹14-25 LPA", department: "mechanical",
+    description: "Design electric vehicle powertrain systems for Tata's EV lineup. Work on motor selection, battery pack integration, and thermal management.",
+    requirements: ["B.Tech/M.Tech in Mechanical/Auto", "EV powertrain knowledge", "MATLAB/Simulink", "3+ years experience"],
+    postedAt: "2026-02-10", trustScore: 94, verified: true, flagged: false,
+    applicationUrl: "https://www.tatamotors.com/careers", recruiter: recruiters[18],
+  },
+  {
+    id: "j28", title: "Vehicle Testing Intern", company: "Hyundai India", recruiterId: "r20", type: "internship",
+    location: "Chennai, India", salary: "₹35,000/month", department: "mechanical",
+    description: "6-month internship in Hyundai's vehicle testing division. Conduct NVH testing, durability analysis, and crash simulation support.",
+    requirements: ["Pursuing B.Tech in Mechanical", "AutoCAD/CATIA basics", "Automotive passion", "Good analytical skills"],
+    postedAt: "2026-02-12", trustScore: 91, verified: true, flagged: false,
+    applicationUrl: "https://www.hyundai.com/in/en/careers", recruiter: recruiters[19],
+  },
+  {
+    id: "j29", title: "Robotics Engineer", company: "Bosch India", recruiterId: "r10", type: "job",
+    location: "Bangalore, India", salary: "₹15-24 LPA", department: "mechanical",
+    description: "Develop robotic automation solutions for Bosch's Industry 4.0 initiatives. Program industrial robots and design end-effectors.",
+    requirements: ["B.Tech/M.Tech in Mechanical/Mechatronics", "ROS framework", "Python/C++", "Robot kinematics"],
+    postedAt: "2026-02-08", trustScore: 93, verified: true, flagged: false,
+    applicationUrl: "https://careers.bosch.com", recruiter: recruiters[9],
+  },
+
+  // Civil
+  {
+    id: "j30", title: "Highway Design Engineer", company: "Larsen & Toubro", recruiterId: "r8", type: "job",
+    location: "Mumbai, India", salary: "₹12-20 LPA", department: "civil",
+    description: "Design national highway alignments and interchanges using Civil 3D and MX Road. Work on NHAI mega projects across India.",
+    requirements: ["B.Tech/M.Tech in Civil", "Civil 3D, MX Road", "Highway design codes", "3+ years experience"],
+    postedAt: "2026-02-11", trustScore: 94, verified: true, flagged: false,
+    applicationUrl: "https://careers.larsentoubro.com", recruiter: recruiters[7],
+  },
+  {
+    id: "j31", title: "Smart City Project Intern", company: "Tata Consultancy Services", recruiterId: "r7", type: "internship",
+    location: "Pune, India", salary: "₹30,000/month", department: "civil",
+    description: "Work on IoT-integrated smart city infrastructure projects. Support GIS mapping, traffic modeling, and urban planning initiatives.",
+    requirements: ["Pursuing B.Tech in Civil", "GIS/Remote Sensing basics", "AutoCAD", "Interest in urban planning"],
+    postedAt: "2026-02-13", trustScore: 89, verified: true, flagged: false,
+    applicationUrl: "https://careers.tcs.com", recruiter: recruiters[6],
+  },
+  {
+    id: "j32", title: "Water Resources Engineer", company: "Reliance Industries", recruiterId: "r16", type: "job",
+    location: "Jamnagar, India", salary: "₹9-15 LPA", department: "civil",
+    description: "Design water treatment plants and pipeline networks for Reliance's refinery complex. Work on effluent treatment and rainwater harvesting systems.",
+    requirements: ["B.Tech in Civil/Environmental", "HEC-RAS, EPANET", "Water treatment knowledge", "2+ years experience"],
+    postedAt: "2026-02-09", trustScore: 90, verified: true, flagged: false,
+    applicationUrl: "https://careers.ril.com", recruiter: recruiters[15],
   },
 
   // ── Flagged/Fraud ──
